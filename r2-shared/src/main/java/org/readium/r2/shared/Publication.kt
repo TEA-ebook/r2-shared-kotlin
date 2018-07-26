@@ -141,11 +141,9 @@ class Publication : Serializable {
     }
 
     fun addSelfLink(endPoint: String, baseURL: URL) {
-        val publicationUrl: URL
-        val link = Link()
-        val manifestPath = "$endPoint/manifest.json"
+        val publicationUrl = URL("$baseURL$endPoint/manifest.json")
 
-        publicationUrl = URL(baseURL.toString() + manifestPath)
+        val link = Link()
         link.href = publicationUrl.toString()
         link.typeLink = "application/webpub+json"
         link.rel.add("self")
